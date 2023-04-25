@@ -2,6 +2,7 @@
 title: "Evidencia 1: Análisis inicial"
 output: html_notebook
 ---
+
 # Instituto Tecnológico de Estudios Superiores de Monterrey  
 ## Análisis de biología computacional - BT1013  
 ### Desirée Espinosa Contreras - A01425162  
@@ -27,5 +28,9 @@ Existen variables características descubiertas en distintas regiones del mundo 
 
 ## Propuesta
 Para el proyecto, tenemos considerado hacer un análisis de las secuencias del virus en México de Febrero a Diciembre del 2020, y de Febrero a Diciembre de 2021. Esto con el objetivo de encontrar los cambios que tuvo el SARS-CoV-2 en su replicación, entre estos periodos de tiempo. Anlizando principalmente los genes E, M, ORF6, ORF7ab, ORF8, N, ORF10, los cuales han demostrado tener un papel importante en la replicación del virus. A partir de los resultados que obtengamos, podremos concluir diferentes cosas, por ejemplo, si la replicación no tuvo cambios mayores, pero los casos fueron disminuyendo, entonces podríamos concluir que las medidas de prevención fueron las que realmente tuvieron un impacto sobre la multiplicación del virus y los casos diagnosticados.
+
+#### Bibliografía
+-- https://www.medintensiva.org/es-pandemia-por-covid-19-el-mayor-articulo-S0210569120301017
+-- https://coronavirus.jhu.edu/map.html
 
 
