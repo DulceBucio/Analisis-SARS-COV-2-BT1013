@@ -13,7 +13,7 @@ output: html_notebook
 
 La pandemia de COVID-19, provocada por el virus SARS-CoV-2, tuvo su inicio en el año 2020, cuando la Organización Mundial de la Salud declaró la epidemia originalmente situada en China como una emergencia de salud internacional, para posteriormente ser declarada como pandemia.
 En la actualidad, la pandemia continúa en un estado activo, habiendo alcanzado una cifra estimada de 676,609,955 casos de coronavirus a nivel mundial, con un total de 6,881,955 lamentables muertes, según la Universidad Johns Hopkins.
-Asimismo, en México, se estima un total de 7,483,444 casos diagnosticados y  333,188 muertes por COVID-19.
+Asimismo, en México, se estima un total de 7,483,444 casos diagnosticados y 333,188 muertes por COVID-19.
 
 Para nuestro enfoque de estudio es importante definir qué es una variante, la cual es un genoma viral (código genético) que puede incluir una o más mutaciones. La primera variación detectada fue la Alfa B.1.1.7, la cual fue observada por primera vez en el suroeste de Inglaterra y se caracteriza por ser entre 30% y 70% más contagiosa que el virus original.
 
@@ -27,10 +27,52 @@ Existen variables características descubiertas en distintas regiones del mundo 
 **Variante DELTA B.1.617.2**: Encontrada en la India, esta variante dio señales de ser más contagiosa y resistente a vacunas y tratamientos. Fue la variante responsable del colapso del sistema sanitario en ese país, así como de su propagación por 26 países de la región europea de la OMS.
 
 ## Propuesta
-Para el proyecto, tenemos considerado hacer un análisis de las secuencias del virus en México de Febrero a Diciembre del 2020, y de Febrero a Diciembre de 2021. Esto con el objetivo de encontrar los cambios que tuvo el SARS-CoV-2 en su replicación, entre estos periodos de tiempo. Analizando principalmente los genes E, M, ORF6, ORF7ab, ORF8, N, ORF10, los cuales han demostrado tener un papel importante en la replicación del virus. A partir de los resultados que obtengamos, podremos concluir diferentes cosas, por ejemplo, si la replicación no tuvo cambios mayores, pero los casos fueron disminuyendo, entonces podríamos concluir que las medidas de prevención fueron las que realmente tuvieron un impacto sobre la multiplicación del virus y los casos diagnosticados.
+Para el proyecto, tenemos planeado hacer un análisis de las secuencias del virus en México de febrero a diciembre de 2020, y de febrero a diciembre de 2021. Esto con el objetivo de encontrar los cambios que experimentó el SARS-CoV-2 en su estructura durante estos periodos de tiempo. Analizaremos principalmente los genes S, M, E y N, los cuales han demostrado tener un papel importante en la construcción de la estructura del virus, especialmente el gen S. A partir de los resultados que obtengamos, se podrán extraer diversas conclusiones, por ejemplo, si encontramos una cantidad relevante de mutaciones en el gen S, entonces podría implicarse que dichas mutaciones estuvieron involucradas en el aumento de la transmisibilidad del virus y/o en la efectividad de las vacunas. Además, podríamos obtener información valiosa sobre la evolución del virus.
 
+---
+## Desarrollo
+Iniciaremos el análisis de las secuencias, utilizando las diferentes herramientas que nos ofrece R.
+
+```{r}
+#Inicializamos la librería que nos permite leer secuencias en formato fasta, también leemos ambas secuencias, tanto de 2020 como de 2021.
+library(seqinr)
+mx_2020 = read.fasta("2020_sequences_mx.fasta")
+mx_2021 = read.fasta("2021_sequences_mx.fasta")
+
+mutations = data.frame(
+  mutation = character(),
+  pos_global = integer(),
+  cambioCodon = character(),
+  cambioAmino = character(),
+  gen = character()
+)
+
+aminoacido = function(codon) {
+  aminoacid = switch(
+    codon, 
+    "GCU" = "A", "GCC" = "A", "GCA" = "A", "GCG" = "A",
+    "CGU" = "R", "CGC" = "R", "CGA" = "R", "CGG" = "R",
+    "AGA" = "R", "AGG" = "R", "AAU" = "N", "AAC" = "N",
+    "GAU" = "D", "GAC" = "D", "UGU" = "C", "UGC" = "C",
+    "CAA" = "Q", "CAG" = "Q", "GAA" = "E", "GAG" = "E",
+    "GGU" = "G", "GGC" = "G", "GGA" = "G", "GGG" = "G",
+    "CAU" = "H", "CAC" = "H", "AUU" = "I", "AUC" = "I",
+    "AUA" = "I", "UUA" = "L", "UUG" = "L", "CUU" = "L",
+    "CUC" = "L", "CUA" = "L", "CUG" = "L", "AAA" = "K",
+    "AAG" = "K", "AUG" = "M", "UUU" = "F", "UUC" = "F",
+    "CCU" = "P", "CCC" = "P", "CCA" = "P", "CCG" = "P",
+    "UCU" = "S", "UCC" = "S", "UCA" = "S", "UCG" = "S",
+    "AGU" = "S", "AGC" = "S", "ACU" = "T", "ACC" = "T",
+    "ACA" = "T", "ACG" = "T", "UGG" = "W", "UAU" = "Y",
+    "UAC" = "Y", "GUU" = "V", "GUC" = "V", "GUA" = "V",
+    "GUG" = "V"
+  )
+  return (aminoacid)
+}
+```
+---
 #### Bibliografía
 -- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la historia del intensivismo. Medicina Intensiva, 44(6), 323-324. https://doi.org/10.1016/j.medin.2020.04.002  
--- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s. f.). Johns Hopkins Coronavirus Resource Center. https://coronavirus.jhu.edu/map.html  
--- Updated working definitions and primary actions for SARSCOV2 variants. (n.d.). Retrieved April 25, 2023, from https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants  
--- Pulido, S. (2021, June 21). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/
+-- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.). Johns Hopkins Coronavirus Resource Center. https://coronavirus.jhu.edu/map.html  
+-- Updated working definitions and primary actions for SARSCOV2 variants. (s.f.). Retrieved April 25, 2023, from https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants  
+-- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/
