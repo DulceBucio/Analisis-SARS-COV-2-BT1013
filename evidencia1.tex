@@ -1,0 +1,261 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Evidencia 1: Análisis inicial},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Evidencia 1: Análisis inicial}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{instituto-tecnoluxf3gico-de-estudios-superiores-de-monterrey}{%
+\section{Instituto Tecnológico de Estudios Superiores de
+Monterrey}\label{instituto-tecnoluxf3gico-de-estudios-superiores-de-monterrey}}
+
+\hypertarget{anuxe1lisis-de-biologuxeda-computacional---bt1013}{%
+\subsection{Análisis de biología computacional -
+BT1013}\label{anuxe1lisis-de-biologuxeda-computacional---bt1013}}
+
+\hypertarget{desiruxe9e-espinosa-contreras---a01425162}{%
+\subsubsection{Desirée Espinosa Contreras -
+A01425162}\label{desiruxe9e-espinosa-contreras---a01425162}}
+
+\hypertarget{dulce-nahomi-bucio-rivas---a01425284}{%
+\subsubsection{Dulce Nahomi Bucio Rivas -
+A01425284}\label{dulce-nahomi-bucio-rivas---a01425284}}
+
+\hypertarget{introducciuxf3n}{%
+\subsection{Introducción}\label{introducciuxf3n}}
+
+La pandemia de COVID-19, provocada por el virus SARS-CoV-2, tuvo su
+inicio en el año 2020, cuando la Organización Mundial de la Salud
+declaró la epidemia originalmente situada en China como una emergencia
+de salud internacional, para posteriormente ser declarada como pandemia.
+En la actualidad, la pandemia continúa en un estado activo, habiendo
+alcanzado una cifra estimada de 676,609,955 casos de coronavirus a nivel
+mundial, con un total de 6,881,955 lamentables muertes, según la
+Universidad Johns Hopkins. Asimismo, en México, se estima un total de
+7,483,444 casos diagnosticados y 333,188 muertes por COVID-19.
+
+Para nuestro enfoque de estudio es importante definir qué es una
+variante, la cual es un genoma viral (código genético) que puede incluir
+una o más mutaciones. La primera variación detectada fue la Alfa
+B.1.1.7, la cual fue observada por primera vez en el suroeste de
+Inglaterra y se caracteriza por ser entre 30\% y 70\% más contagiosa que
+el virus original.
+
+Existen variables características descubiertas en distintas regiones del
+mundo que fueron principalmente bajo observación, tales son:\\
+\textbf{Variante Alfa B.1.1.7}: Descubierta en Reino Unido, fue la
+variable dominante a nivel mundial hasta el año 2021 con una frecuencia
+mayor al 80\% en regiones tales como Europa y América del Norte.
+
+\textbf{Variante Beta B.1.351}: Detectada en Sudáfrica, siendo
+mayoritariamente dominante en esta región pero en otras no rebasando una
+frecuencia del 20\%. Caracterizada únicamente por tener mayor carga
+vírica pero no se encontró ni se demostró nada más acerca de su
+transmisibilidad.
+
+\textbf{Variante Gamma P1}: Procedente de la Amazonas Brasileña se
+convirtió en la más dominante en América del Sur mientras que en otras
+regiones la frecuencia no supera el 10\%, siendo caracterizada por ser
+más contagiosa.
+
+\textbf{Variante DELTA B.1.617.2}: Encontrada en la India, esta variante
+dio señales de ser más contagiosa y resistente a vacunas y tratamientos.
+Fue la variante responsable del colapso del sistema sanitario en ese
+país, así como de su propagación por 26 países de la región europea de
+la OMS.
+
+\hypertarget{propuesta}{%
+\subsection{Propuesta}\label{propuesta}}
+
+\hypertarget{para-el-proyecto-tenemos-planeado-hacer-un-anuxe1lisis-de-las-secuencias-del-virus-en-muxe9xico-de-febrero-a-diciembre-de-2020-y-de-febrero-a-diciembre-de-2021.-esto-con-el-objetivo-de-encontrar-los-cambios-que-experimentuxf3-el-sars-cov-2-en-su-estructura-durante-estos-periodos-de-tiempo.-analizaremos-principalmente-los-genes-s-m-e-y-n-los-cuales-han-demostrado-tener-un-papel-importante-en-la-construcciuxf3n-de-la-estructura-del-virus-especialmente-el-gen-s.-a-partir-de-los-resultados-que-obtengamos-se-podruxe1n-extraer-diversas-conclusiones-por-ejemplo-si-encontramos-una-cantidad-relevante-de-mutaciones-en-el-gen-s-entonces-podruxeda-implicarse-que-dichas-mutaciones-estuvieron-involucradas-en-el-aumento-de-la-transmisibilidad-del-virus-yo-en-la-efectividad-de-las-vacunas.-ademuxe1s-podruxedamos-obtener-informaciuxf3n-valiosa-sobre-la-evoluciuxf3n-del-virus.}{%
+\subsection{Para el proyecto, tenemos planeado hacer un análisis de las
+secuencias del virus en México de febrero a diciembre de 2020, y de
+febrero a diciembre de 2021. Esto con el objetivo de encontrar los
+cambios que experimentó el SARS-CoV-2 en su estructura durante estos
+periodos de tiempo. Analizaremos principalmente los genes S, M, E y N,
+los cuales han demostrado tener un papel importante en la construcción
+de la estructura del virus, especialmente el gen S. A partir de los
+resultados que obtengamos, se podrán extraer diversas conclusiones, por
+ejemplo, si encontramos una cantidad relevante de mutaciones en el gen
+S, entonces podría implicarse que dichas mutaciones estuvieron
+involucradas en el aumento de la transmisibilidad del virus y/o en la
+efectividad de las vacunas. Además, podríamos obtener información
+valiosa sobre la evolución del
+virus.}\label{para-el-proyecto-tenemos-planeado-hacer-un-anuxe1lisis-de-las-secuencias-del-virus-en-muxe9xico-de-febrero-a-diciembre-de-2020-y-de-febrero-a-diciembre-de-2021.-esto-con-el-objetivo-de-encontrar-los-cambios-que-experimentuxf3-el-sars-cov-2-en-su-estructura-durante-estos-periodos-de-tiempo.-analizaremos-principalmente-los-genes-s-m-e-y-n-los-cuales-han-demostrado-tener-un-papel-importante-en-la-construcciuxf3n-de-la-estructura-del-virus-especialmente-el-gen-s.-a-partir-de-los-resultados-que-obtengamos-se-podruxe1n-extraer-diversas-conclusiones-por-ejemplo-si-encontramos-una-cantidad-relevante-de-mutaciones-en-el-gen-s-entonces-podruxeda-implicarse-que-dichas-mutaciones-estuvieron-involucradas-en-el-aumento-de-la-transmisibilidad-del-virus-yo-en-la-efectividad-de-las-vacunas.-ademuxe1s-podruxedamos-obtener-informaciuxf3n-valiosa-sobre-la-evoluciuxf3n-del-virus.}}
+
+\hypertarget{desarrollo}{%
+\subsection{Desarrollo}\label{desarrollo}}
+
+Iniciaremos el análisis de las secuencias, utilizando las diferentes
+herramientas que nos ofrece R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Inicializamos la librería que nos permite leer secuencias en formato fasta, también leemos ambas secuencias, tanto de 2020 como de 2021.}
+\FunctionTok{library}\NormalTok{(seqinr)}
+\FunctionTok{library}\NormalTok{(knitr)}
+
+\NormalTok{mx\_2020 }\OtherTok{=} \FunctionTok{read.fasta}\NormalTok{(}\StringTok{"2020\_sequences\_mx.fasta"}\NormalTok{)}
+\NormalTok{mx\_2021 }\OtherTok{=} \FunctionTok{read.fasta}\NormalTok{(}\StringTok{"2021\_sequences\_mx.fasta"}\NormalTok{)}
+
+\NormalTok{mutations }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{mutation =} \FunctionTok{character}\NormalTok{(),}
+  \AttributeTok{pos\_global =} \FunctionTok{integer}\NormalTok{(),}
+  \AttributeTok{cambioCodon =} \FunctionTok{character}\NormalTok{(),}
+  \AttributeTok{cambioAmino =} \FunctionTok{character}\NormalTok{(),}
+  \AttributeTok{gen =} \FunctionTok{character}\NormalTok{()}
+\NormalTok{)}
+
+\NormalTok{aminoacido }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(codon) \{}
+\NormalTok{  aminoacid }\OtherTok{=} \ControlFlowTok{switch}\NormalTok{(}
+\NormalTok{    codon, }
+    \StringTok{"GCU"} \OtherTok{=} \StringTok{"A"}\NormalTok{, }\StringTok{"GCC"} \OtherTok{=} \StringTok{"A"}\NormalTok{, }\StringTok{"GCA"} \OtherTok{=} \StringTok{"A"}\NormalTok{, }\StringTok{"GCG"} \OtherTok{=} \StringTok{"A"}\NormalTok{,}
+    \StringTok{"CGU"} \OtherTok{=} \StringTok{"R"}\NormalTok{, }\StringTok{"CGC"} \OtherTok{=} \StringTok{"R"}\NormalTok{, }\StringTok{"CGA"} \OtherTok{=} \StringTok{"R"}\NormalTok{, }\StringTok{"CGG"} \OtherTok{=} \StringTok{"R"}\NormalTok{,}
+    \StringTok{"AGA"} \OtherTok{=} \StringTok{"R"}\NormalTok{, }\StringTok{"AGG"} \OtherTok{=} \StringTok{"R"}\NormalTok{, }\StringTok{"AAU"} \OtherTok{=} \StringTok{"N"}\NormalTok{, }\StringTok{"AAC"} \OtherTok{=} \StringTok{"N"}\NormalTok{,}
+    \StringTok{"GAU"} \OtherTok{=} \StringTok{"D"}\NormalTok{, }\StringTok{"GAC"} \OtherTok{=} \StringTok{"D"}\NormalTok{, }\StringTok{"UGU"} \OtherTok{=} \StringTok{"C"}\NormalTok{, }\StringTok{"UGC"} \OtherTok{=} \StringTok{"C"}\NormalTok{,}
+    \StringTok{"CAA"} \OtherTok{=} \StringTok{"Q"}\NormalTok{, }\StringTok{"CAG"} \OtherTok{=} \StringTok{"Q"}\NormalTok{, }\StringTok{"GAA"} \OtherTok{=} \StringTok{"E"}\NormalTok{, }\StringTok{"GAG"} \OtherTok{=} \StringTok{"E"}\NormalTok{,}
+    \StringTok{"GGU"} \OtherTok{=} \StringTok{"G"}\NormalTok{, }\StringTok{"GGC"} \OtherTok{=} \StringTok{"G"}\NormalTok{, }\StringTok{"GGA"} \OtherTok{=} \StringTok{"G"}\NormalTok{, }\StringTok{"GGG"} \OtherTok{=} \StringTok{"G"}\NormalTok{,}
+    \StringTok{"CAU"} \OtherTok{=} \StringTok{"H"}\NormalTok{, }\StringTok{"CAC"} \OtherTok{=} \StringTok{"H"}\NormalTok{, }\StringTok{"AUU"} \OtherTok{=} \StringTok{"I"}\NormalTok{, }\StringTok{"AUC"} \OtherTok{=} \StringTok{"I"}\NormalTok{,}
+    \StringTok{"AUA"} \OtherTok{=} \StringTok{"I"}\NormalTok{, }\StringTok{"UUA"} \OtherTok{=} \StringTok{"L"}\NormalTok{, }\StringTok{"UUG"} \OtherTok{=} \StringTok{"L"}\NormalTok{, }\StringTok{"CUU"} \OtherTok{=} \StringTok{"L"}\NormalTok{,}
+    \StringTok{"CUC"} \OtherTok{=} \StringTok{"L"}\NormalTok{, }\StringTok{"CUA"} \OtherTok{=} \StringTok{"L"}\NormalTok{, }\StringTok{"CUG"} \OtherTok{=} \StringTok{"L"}\NormalTok{, }\StringTok{"AAA"} \OtherTok{=} \StringTok{"K"}\NormalTok{,}
+    \StringTok{"AAG"} \OtherTok{=} \StringTok{"K"}\NormalTok{, }\StringTok{"AUG"} \OtherTok{=} \StringTok{"M"}\NormalTok{, }\StringTok{"UUU"} \OtherTok{=} \StringTok{"F"}\NormalTok{, }\StringTok{"UUC"} \OtherTok{=} \StringTok{"F"}\NormalTok{,}
+    \StringTok{"CCU"} \OtherTok{=} \StringTok{"P"}\NormalTok{, }\StringTok{"CCC"} \OtherTok{=} \StringTok{"P"}\NormalTok{, }\StringTok{"CCA"} \OtherTok{=} \StringTok{"P"}\NormalTok{, }\StringTok{"CCG"} \OtherTok{=} \StringTok{"P"}\NormalTok{,}
+    \StringTok{"UCU"} \OtherTok{=} \StringTok{"S"}\NormalTok{, }\StringTok{"UCC"} \OtherTok{=} \StringTok{"S"}\NormalTok{, }\StringTok{"UCA"} \OtherTok{=} \StringTok{"S"}\NormalTok{, }\StringTok{"UCG"} \OtherTok{=} \StringTok{"S"}\NormalTok{,}
+    \StringTok{"AGU"} \OtherTok{=} \StringTok{"S"}\NormalTok{, }\StringTok{"AGC"} \OtherTok{=} \StringTok{"S"}\NormalTok{, }\StringTok{"ACU"} \OtherTok{=} \StringTok{"T"}\NormalTok{, }\StringTok{"ACC"} \OtherTok{=} \StringTok{"T"}\NormalTok{,}
+    \StringTok{"ACA"} \OtherTok{=} \StringTok{"T"}\NormalTok{, }\StringTok{"ACG"} \OtherTok{=} \StringTok{"T"}\NormalTok{, }\StringTok{"UGG"} \OtherTok{=} \StringTok{"W"}\NormalTok{, }\StringTok{"UAU"} \OtherTok{=} \StringTok{"Y"}\NormalTok{,}
+    \StringTok{"UAC"} \OtherTok{=} \StringTok{"Y"}\NormalTok{, }\StringTok{"GUU"} \OtherTok{=} \StringTok{"V"}\NormalTok{, }\StringTok{"GUC"} \OtherTok{=} \StringTok{"V"}\NormalTok{, }\StringTok{"GUA"} \OtherTok{=} \StringTok{"V"}\NormalTok{,}
+    \StringTok{"GUG"} \OtherTok{=} \StringTok{"V"}
+\NormalTok{  )}
+  \FunctionTok{return}\NormalTok{ (aminoacid)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{bibliografuxeda}{%
+\paragraph{Bibliografía}\label{bibliografuxeda}}
+
+-- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la
+historia del intensivismo. Medicina Intensiva, 44(6), 323-324.
+\url{https://doi.org/10.1016/j.medin.2020.04.002}\\
+-- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.).
+Johns Hopkins Coronavirus Resource Center.
+\url{https://coronavirus.jhu.edu/map.html}\\
+-- Updated working definitions and primary actions for SARSCOV2
+variants. (s.f.). Retrieved April 25, 2023, from
+\url{https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants}\\
+-- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y
+experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved
+April 25, 2023, from
+\url{https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/}
+
+\end{document}

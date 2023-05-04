@@ -6,14 +6,17 @@ output:
     number_sections: true
     latex_engine: pdflatex
     keep_tex: true
----
-
-# Instituto Tecnológico de Estudios Superiores de Monterrey  
-## Análisis de biología computacional - BT1013  
-### Desirée Espinosa Contreras - A01425162  
-### Dulce Nahomi Bucio Rivas - A01425284  
 
 ---
+# Instituto Tecnológico de Estudios Superiores de Monterrey
+
+## Análisis de biología computacional - BT1013
+
+### Desirée Espinosa Contreras - A01425162
+
+### Dulce Nahomi Bucio Rivas - A01425284
+
+
 ## Introducción
 
 La pandemia de COVID-19, provocada por el virus SARS-CoV-2, tuvo su inicio en el año 2020, cuando la Organización Mundial de la Salud declaró la epidemia originalmente situada en China como una emergencia de salud internacional, para posteriormente ser declarada como pandemia.
@@ -33,14 +36,17 @@ Existen variables características descubiertas en distintas regiones del mundo 
 
 ## Propuesta
 Para el proyecto, tenemos planeado hacer un análisis de las secuencias del virus en México de febrero a diciembre de 2020, y de febrero a diciembre de 2021. Esto con el objetivo de encontrar los cambios que experimentó el SARS-CoV-2 en su estructura durante estos periodos de tiempo. Analizaremos principalmente los genes S, M, E y N, los cuales han demostrado tener un papel importante en la construcción de la estructura del virus, especialmente el gen S. A partir de los resultados que obtengamos, se podrán extraer diversas conclusiones, por ejemplo, si encontramos una cantidad relevante de mutaciones en el gen S, entonces podría implicarse que dichas mutaciones estuvieron involucradas en el aumento de la transmisibilidad del virus y/o en la efectividad de las vacunas. Además, podríamos obtener información valiosa sobre la evolución del virus.
-
 ---
+
 ## Desarrollo
+
 Iniciaremos el análisis de las secuencias, utilizando las diferentes herramientas que nos ofrece R.
 
 ```{r Inicio}
 #Inicializamos la librería que nos permite leer secuencias en formato fasta, también leemos ambas secuencias, tanto de 2020 como de 2021.
 library(seqinr)
+library(knitr)
+
 mx_2020 = read.fasta("2020_sequences_mx.fasta")
 mx_2021 = read.fasta("2021_sequences_mx.fasta")
 
@@ -74,11 +80,15 @@ aminoacido = function(codon) {
   )
   return (aminoacid)
 }
+
+
 ```
 
----
+------------------------------------------------------------------------
+
 #### Bibliografía
--- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la historia del intensivismo. Medicina Intensiva, 44(6), 323-324. https://doi.org/10.1016/j.medin.2020.04.002  
--- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.). Johns Hopkins Coronavirus Resource Center. https://coronavirus.jhu.edu/map.html  
--- Updated working definitions and primary actions for SARSCOV2 variants. (s.f.). Retrieved April 25, 2023, from https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants  
--- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/
+
+-- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la historia del intensivismo. Medicina Intensiva, 44(6), 323-324. <https://doi.org/10.1016/j.medin.2020.04.002>\
+-- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.). Johns Hopkins Coronavirus Resource Center. <https://coronavirus.jhu.edu/map.html>\
+-- Updated working definitions and primary actions for SARSCOV2 variants. (s.f.). Retrieved April 25, 2023, from <https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants>\
+-- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>
