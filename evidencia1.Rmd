@@ -1,6 +1,6 @@
 ---
 title: "Evidencia 1: Análisis inicial"
-output: html_notebook
+output: pdf_document
 ---
 
 # Instituto Tecnológico de Estudios Superiores de Monterrey  
