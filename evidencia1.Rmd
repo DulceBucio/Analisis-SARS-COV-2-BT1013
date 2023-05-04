@@ -1,6 +1,11 @@
 ---
 title: "Evidencia 1: Análisis inicial"
-output: pdf_document
+output:
+  pdf_document:
+    toc: true
+    number_sections: true
+    latex_engine: pdflatex
+    keep_tex: true
 ---
 
 # Instituto Tecnológico de Estudios Superiores de Monterrey  
@@ -33,7 +38,7 @@ Para el proyecto, tenemos planeado hacer un análisis de las secuencias del viru
 ## Desarrollo
 Iniciaremos el análisis de las secuencias, utilizando las diferentes herramientas que nos ofrece R.
 
-```{r}
+```{r Inicio}
 #Inicializamos la librería que nos permite leer secuencias en formato fasta, también leemos ambas secuencias, tanto de 2020 como de 2021.
 library(seqinr)
 mx_2020 = read.fasta("2020_sequences_mx.fasta")
@@ -70,6 +75,7 @@ aminoacido = function(codon) {
   return (aminoacid)
 }
 ```
+
 ---
 #### Bibliografía
 -- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la historia del intensivismo. Medicina Intensiva, 44(6), 323-324. https://doi.org/10.1016/j.medin.2020.04.002  
