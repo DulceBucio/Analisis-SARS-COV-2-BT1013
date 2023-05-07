@@ -12,7 +12,7 @@ Dulce Nahomi Bucio Rivas - A01425284
 
 ## Introducción
 
-La pandemia de COVID-19, provocada por el virus SARS-CoV-2, tuvo su inicio en el año 2020, cuando la Organización Mundial de la Salud declaró la epidemia mx_2020mente situada en China como una emergencia de salud internacional, para posteriormente ser declarada como pandemia. En la actualidad, la pandemia continúa en un estado activo, habiendo alcanzado una cifra estimada de 676,609,955 casos de coronavirus a nivel mundial, con un total de 6,881,955 lamentables muertes, según la Universidad Johns Hopkins. Asimismo, en México, se estima un total de 7,483,444 casos diagnosticados y 333,188 muertes por COVID-19.
+La pandemia de COVID-19, provocada por el virus SARS-CoV-2, tuvo su inicio en el año 2020, cuando la Organización Mundial de la Salud declaró la epidemia originalmente situada en China como una emergencia de salud internacional, para posteriormente ser declarada como pandemia. En la actualidad, la pandemia continúa en un estado activo, habiendo alcanzado una cifra estimada de 676,609,955 casos de coronavirus a nivel mundial, con un total de 6,881,955 lamentables muertes, según la Universidad Johns Hopkins. Asimismo, en México, se estima un total de 7,483,444 casos diagnosticados y 333,188 muertes por COVID-19.
 
 Para nuestro enfoque de estudio es importante definir qué es una variante, la cual es un genoma viral (código genético) que puede incluir una o más mutaciones. La primera variación detectada fue la Alfa B.1.1.7, la cual fue observada por primera vez en el suroeste de Inglaterra y se caracteriza por ser entre 30% y 70% más contagiosa que el virus original.
 
@@ -39,6 +39,7 @@ library(seqinr)
 library(knitr)
 mx_2020 = read.fasta("2020_sequences_mx.fasta")
 mx_2021 = read.fasta("2021_sequences_mx.fasta")
+original = read.fasta("original.txt")
 
 mutations = data.frame(
   mutation = character(),
@@ -86,8 +87,7 @@ mutaciones = function(arnOriGenX, arnMexaGenX, inicioOri, gen){
     aminoMex = aminoacido(codonMex)
     amino = paste(aminoOri, numCodon, aminoMex, sep="")
     obs = list(muta, posGlobal, codon, amino, gen)
-    print(obs)
-    #mutations = rbind(mutations, obs)
+    mutations[nrow(mutations)+1, ] = obs
   }
   return(mutations)
 }
@@ -101,7 +101,8 @@ for (j in seq(1,length(mx_2021))){
     vect = 12
   }
   if (j==2) next
-  anotaciones = attr(mx_2020[[vect]], "Annot") 
+  
+  anotaciones = attr(original[[vect]], "Annot") 
   atributos = unlist(strsplit(anotaciones,"\\[|\\]|:|=|\\.|\\(")); 
   geneName = atributos[which(atributos=="gene")+1] 
   if (length(which(atributos=="join"))>0) inicioGen = as.integer(atributos[which(atributos=="join")+1]) 
