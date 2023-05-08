@@ -1,14 +1,4 @@
 ---
-
-title: "Evidencia 1: Análisis inicial"
-output:
-  pdf_document:
-    toc: true
-    number_sections: true
-    latex_engine: pdflatex
-    keep_tex: true
-
----
 # Instituto Tecnológico de Estudios Superiores de Monterrey
 
 ## Análisis de biología computacional - BT1013
@@ -19,7 +9,7 @@ output:
 
 
 
-## title: "Evidencia 1: Análisis inicial" output: pdf_document: toc: true number_sections: true latex_engine: pdflatex keep_tex: true
+## title: "Evidencia 2: Proyecto" output: pdf_document: toc: true number_sections: true latex_engine: pdflatex keep_tex: true
 ---
 
 ## Análisis de biología computacional - BT1013
@@ -29,7 +19,6 @@ Instituto Tecnológico de Estudios Superiores de Monterrey
 Desirée Espinosa Contreras - A01425162
 
 Dulce Nahomi Bucio Rivas - A01425284
-
 
 ## Introducción
 
@@ -50,8 +39,7 @@ Existen variables características descubiertas en distintas regiones del mundo 
 
 Para el proyecto, tenemos planeado hacer un análisis de las secuencias del virus en México de febrero a diciembre de 2020, y de febrero a diciembre de 2021. Esto con el objetivo de encontrar los cambios que experimentó el SARS-CoV-2 en su estructura durante estos periodos de tiempo. Analizaremos principalmente los genes S, M, E y N, los cuales han demostrado tener un papel importante en la construcción de la estructura del virus, especialmente el gen S. A partir de los resultados que obtengamos, se podrán extraer diversas conclusiones, por ejemplo, si encontramos una cantidad relevante de mutaciones en el gen S, entonces podría implicarse que dichas mutaciones estuvieron involucradas en el aumento de la transmisibilidad del virus y/o en la efectividad de las vacunas. Además, podríamos obtener información valiosa sobre la evolución del virus.
 
----
-
+------------------------------------------------------------------------
 
 ## Desarrollo
 
@@ -65,8 +53,8 @@ library(knitr)
 
 
 
-mx_2020 = read.fasta("2020_sequences_mx.fasta")
-mx_2021 = read.fasta("2021_sequences_mx.fasta")
+mx_2020 = read.fasta("mx_2020_b519.fasta")
+mx_2021 = read.fasta("mx_2021_b519.fasta")
 original = read.fasta("original.txt")
 
 mutations = data.frame(
@@ -123,27 +111,30 @@ mutaciones = function(arnOriGenX, arnMexaGenX, inicioOri, gen){
   return(mutations)
 }
 
-for (j in seq(1,length(mx_2021))){
-  arnMexa2021 = as.vector(mx_2021[[j]])
-  arnMexa2021[arnMexa2021 == "t"] = "u"
-  arnMexa2021 = toupper(arnMexa2021)
-  vect = j%%12
-  if (vect == 0){
-    vect = 12
-  }
-  if (j==2) next
-  
-  anotaciones = attr(original[[vect]], "Annot") 
-  atributos = unlist(strsplit(anotaciones,"\\[|\\]|:|=|\\.|\\(")); 
-  geneName = atributos[which(atributos=="gene")+1] 
-  if (length(which(atributos=="join"))>0) inicioGen = as.integer(atributos[which(atributos=="join")+1]) 
-  else inicioGen = as.integer(atributos[which(atributos=="location")+1]) 
-  #cat ("------ gene:", geneName, "inicioGen:",inicioGen,"\n")
-  arnMexa2020 = as.vector(mx_2020[[vect]])
+
+for (k in seq(1, length(mx_2020))) {
+  arnMexa2020 = as.vector(mx_2020[[k]])
   arnMexa2020[arnMexa2020=="t"] = "u"
   arnMexa2020 = toupper(arnMexa2020)
-  
-  mutations = mutaciones(arnMexa2020, arnMexa2021, inicioGen, geneName)
+  for (j in seq(1,length(mx_2021))){
+    if (k%%12 == j%%12){
+      arnMexa2021 = as.vector(mx_2021[[j]])
+      arnMexa2021[arnMexa2021 == "t"] = "u"
+      arnMexa2021 = toupper(arnMexa2021)
+      vect = j%%12
+      if (vect == 0){
+        vect = 12
+      }
+      if (j==2) next
+      anotaciones = attr(original[[vect]], "Annot") 
+      atributos = unlist(strsplit(anotaciones,"\\[|\\]|:|=|\\.|\\(")); 
+      geneName = atributos[which(atributos=="gene")+1] 
+      if (length(which(atributos=="join"))>0) inicioGen = as.integer(atributos[which(atributos=="join")+1]) 
+      else inicioGen = as.integer(atributos[which(atributos=="location")+1]) 
+      #cat ("------ gene:", geneName, "inicioGen:",inicioGen,"\n")
+      mutations = mutaciones(arnMexa2020, arnMexa2021, inicioGen, geneName)
+    }
+  }
 }
 
 ```
