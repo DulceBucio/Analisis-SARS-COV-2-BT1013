@@ -115,6 +115,7 @@ mutaciones = function(arnOriGenX, arnMexaGenX, inicioOri, gen){
 }
 ```
 
+<<<<<<< Updated upstream
 
 Después, con esta función "mutaciones", se extraen las distintas observaciones necesarias para el análisis, como la posición de inicio de cada gen, que se obtiene a partir de las anotaciones del archivo que contiene la secuencia original del virus. Otras de las observaciones que devuelve esta función es la posición donde se da el cambio de nucleótido, y con ello se obtiene la posición del codón, así como las mutaciones con la abreviatura correspondiente. Además de devolver dichas observaciones, indica también a qué gen corresponde cada una de las anteriormente mencionadas.
 
@@ -212,3 +213,6 @@ grafica_S
 -- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.). Johns Hopkins Coronavirus Resource Center. <https://coronavirus.jhu.edu/map.html>\
 -- Updated working definitions and primary actions for SARSCOV2 variants. (s.f.). Retrieved April 25, 2023, from <https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants>\
 -- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>
+=======
+## Bibliografía
+>>>>>>> Stashed changes
