@@ -101,13 +101,13 @@ dfgraph = filter( #crea una especie de dataframe (tibble) con su propia estructu
 )
 mutations_S = subset(dfgraph, gen == "S")
 
-#library(ggplot2)
-#p = ggplot(mutations_S)
-#p = p + aes(x=cambioAmino, y= Cuenta, fill=cambioAmino, label=..identity..)
-#p = p + ggtitle("Frecuencia de mutaciones de sustitución en B.1.1.519 en el gen S")
-#p = p + labs(x="Mutación", y="Frecuencia", fill="Mutación")
-#p = p + geom_bar(stat = "identity") #stat = count es cuando ggplot hace el conteo
-#p = p + geom_text(stat = "identity", vjust=0)
-#p = p + theme_bw()
-
+library(ggplot2)
+p = ggplot(mutations_S)
+p = p + aes(x=cambioAmino, y= Cuenta, fill=cambioAmino, label=Cuenta)
+p = p + ggtitle("Frecuencia de mutaciones de sustitución en B.1.1.519 en el gen S")
+p = p + labs(x="Mutación", y="Frecuencia", fill="Mutación")
+p = p + geom_bar(stat = "identity") #stat = count es cuando ggplot hace el conteo
+p = p + geom_text(stat = "identity", vjust=0)
+p = p + theme_bw()
+p
 #
