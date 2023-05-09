@@ -100,14 +100,43 @@ dfgraph = filter( #crea una especie de dataframe (tibble) con su propia estructu
   Cuenta>100
 )
 mutations_S = subset(dfgraph, gen == "S")
+mutations_M = subset(dfgraph, gen == "M")
+mutations_E = subset(dfgraph, gen == "E")
+mutations_N = subset(dfgraph, gen == "N")
 
 library(ggplot2)
-p = ggplot(mutations_S)
-p = p + aes(x=cambioAmino, y= Cuenta, fill=cambioAmino, label=Cuenta)
-p = p + ggtitle("Frecuencia de mutaciones de sustitución en B.1.1.519 en el gen S")
-p = p + labs(x="Mutación", y="Frecuencia", fill="Mutación")
-p = p + geom_bar(stat = "identity") #stat = count es cuando ggplot hace el conteo
-p = p + geom_text(stat = "identity", vjust=0)
-p = p + theme_bw()
-p
-#
+grafica_S= ggplot(mutations_S)
+grafica_S= grafica_S+ aes(x=cambioAmino, y= Cuenta, fill=cambioAmino, label=Cuenta)
+grafica_S= grafica_S+ ggtitle("Frecuencia de mutaciones de sustitución en B.1.1.519 en el gen S")
+grafica_S= grafica_S+ labs(x="Mutación", y="Frecuencia", fill="Mutación")
+grafica_S= grafica_S+ geom_bar(stat = "identity") #stat = count es cuando ggplot hace el conteo
+grafica_S= grafica_S+ geom_text(stat = "identity", vjust=0)
+grafica_S= grafica_S+ theme_bw()
+grafica_S
+
+grafica_E= ggplot(mutations_E)
+grafica_E= grafica_E+ aes(x=cambioAmino, y= Cuenta, fill=cambioAmino, label=Cuenta)
+grafica_E= grafica_E+ ggtitle("Frecuencia de mutaciones de sustitución en B.1.1.519 en el gen E")
+grafica_E= grafica_E+ labs(x="Mutación", y="Frecuencia", fill="Mutación")
+grafica_E= grafica_E+ geom_bar(stat = "identity") #stat = count es cuando ggplot hace el conteo
+grafica_E= grafica_E+ geom_text(stat = "identity", vjust=0)
+grafica_E= grafica_E+ theme_bw()
+grafica_E
+
+grafica_M= ggplot(mutations_M)
+grafica_M= grafica_M+ aes(x=cambioAmino, y= Cuenta, fill=cambioAmino, label=Cuenta)
+grafica_M= grafica_M+ ggtitle("Frecuencia de mutaciones de sustitución en B.1.1.519 en el gen M")
+grafica_M= grafica_M+ labs(x="Mutación", y="Frecuencia", fill="Mutación")
+grafica_M= grafica_M+ geom_bar(stat = "identity") #stat = count es cuando ggplot hace el conteo
+grafica_M= grafica_M+ geom_text(stat = "identity", vjust=0)
+grafica_M= grafica_M+ theme_bw()
+grafica_M
+
+grafica_N= ggplot(mutations_N)
+grafica_N= grafica_N+ aes(x=cambioAmino, y= Cuenta, fill=cambioAmino, label=Cuenta)
+grafica_N= grafica_N+ ggtitle("Frecuencia de mutaciones de sustitución en B.1.1.519 en el gen N")
+grafica_N= grafica_N+ labs(x="Mutación", y="Frecuencia", fill="Mutación")
+grafica_N= grafica_N+ geom_bar(stat = "identity") #stat = count es cuando ggplot hace el conteo
+grafica_N= grafica_N+ geom_text(stat = "identity", vjust=0)
+grafica_N= grafica_N+ theme_bw()
+grafica_N

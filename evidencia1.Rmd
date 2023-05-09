@@ -53,12 +53,66 @@ Existen variables características descubiertas en distintas regiones del mundo 
 
 ## Desarrollo
 
-Iniciaremos el análisis de las secuencias, utilizando las diferentes herramientas que nos ofrece R.
+Iniciaremos el análisis de las secuencias. Tras leer las secuencias escogidas con el periodo de tiempo dado, haremos un análisis de cómo mutó cada una de las iniciales, o sea las del 2020 y las del 2021.
 
 ```{r Inicio}
 
+length(mx_2020)
+length(mx_2021)
 
 ```
+
+Consideremos que los 11 genes del SARS-COV-2 son representados en los archivos dados como el ORF1ab separado, por lo que tenemos un vector de 12 genes por cada secuencia. Entonces, tenemos que analizar 5 secuencias del 2020 contra 200 del 2021.
+
+Usaremos la siguiente serie de funciones para hacer encontrar las mutaciones necesarias:
+
+```{r}
+aminoacido = function(codon) {
+  aminoacid = switch(
+    codon, 
+    "GCU" = "A", "GCC" = "A", "GCA" = "A", "GCG" = "A",
+    "CGU" = "R", "CGC" = "R", "CGA" = "R", "CGG" = "R",
+    "AGA" = "R", "AGG" = "R", "AAU" = "N", "AAC" = "N",
+    "GAU" = "D", "GAC" = "D", "UGU" = "C", "UGC" = "C",
+    "CAA" = "Q", "CAG" = "Q", "GAA" = "E", "GAG" = "E",
+    "GGU" = "G", "GGC" = "G", "GGA" = "G", "GGG" = "G",
+    "CAU" = "H", "CAC" = "H", "AUU" = "I", "AUC" = "I",
+    "AUA" = "I", "UUA" = "L", "UUG" = "L", "CUU" = "L",
+    "CUC" = "L", "CUA" = "L", "CUG" = "L", "AAA" = "K",
+    "AAG" = "K", "AUG" = "M", "UUU" = "F", "UUC" = "F",
+    "CCU" = "P", "CCC" = "P", "CCA" = "P", "CCG" = "P",
+    "UCU" = "S", "UCC" = "S", "UCA" = "S", "UCG" = "S",
+    "AGU" = "S", "AGC" = "S", "ACU" = "T", "ACC" = "T",
+    "ACA" = "T", "ACG" = "T", "UGG" = "W", "UAU" = "Y",
+    "UAC" = "Y", "GUU" = "V", "GUC" = "V", "GUA" = "V",
+    "GUG" = "V"
+  )
+  return (aminoacid)
+}
+
+
+mutaciones = function(arnOriGenX, arnMexaGenX, inicioOri, gen){
+  diff = which(arnOriGenX != arnMexaGenX) #obtener las posiciones donde hay nucleótidos diferentes
+  for (x in diff){
+    muta = paste(arnOriGenX[x],"to",arnMexaGenX[x], sep="") # formar un sting con el cambio de nucleótido
+    inicioCodon = x - (x-1)%%3 # calcular el incio del codón
+    posGlobal = inicioCodon + inicioOri #calcular la posición global
+    numCodon = as.integer((x-1)/3+1) #calcular el número del codón
+    indiceCodon = x - (x%%3) + 1
+    codonOri = paste(arnOriGenX[indiceCodon], arnOriGenX[indiceCodon+1], arnOriGenX[indiceCodon+2], sep = "")
+    codonMex = paste(arnMexaGenX[indiceCodon], arnMexaGenX[indiceCodon+1], arnMexaGenX[indiceCodon+2], sep = "")
+    codon = paste(codonOri,"to",codonMex, sep="")
+    aminoOri = aminoacido(codonOri)
+    aminoMex = aminoacido(codonMex)
+    amino = paste(aminoOri, numCodon, aminoMex, sep="")
+    obs = list(muta, posGlobal, codon, amino, gen)
+    mutations[nrow(mutations)+1, ] = obs
+  }
+  return(mutations)
+}
+```
+
+Nótese que la función "aminoácidos" devuelve la abreviación establecida de los distintos aminoácidos según una entrada dada. Esta función es posteriormente
 
 ------------------------------------------------------------------------
 
