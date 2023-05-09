@@ -115,7 +115,94 @@ mutaciones = function(arnOriGenX, arnMexaGenX, inicioOri, gen){
 }
 ```
 
+
 Después, con esta función "mutaciones", se extraen las distintas observaciones necesarias para el análisis, como la posición de inicio de cada gen, que se obtiene a partir de las anotaciones del archivo que contiene la secuencia original del virus. Otras de las observaciones que devuelve esta función es la posición donde se da el cambio de nucleótido, y con ello se obtiene la posición del codón, así como las mutaciones con la abreviatura correspondiente. Además de devolver dichas observaciones, indica también a qué gen corresponde cada una de las anteriormente mencionadas.
+
+Nótese que la función "aminoácidos" devuelve la abreviación establecida de los distintos aminoácidos según una entrada dada. Esta función es posteriormente util
+
+Para usar la función en todas las secuencias aplicamos el siguiente ciclo:
+
+```{r}
+for (k in seq(1, length(mx_2020))) {
+  arnMexa2020 = as.vector(mx_2020[[k]])
+  arnMexa2020[arnMexa2020=="t"] = "u"
+  arnMexa2020 = toupper(arnMexa2020)
+  for (j in seq(1,length(mx_2021))){
+    if (k%%12 == j%%12){
+      arnMexa2021 = as.vector(mx_2021[[j]])
+      arnMexa2021[arnMexa2021 == "t"] = "u"
+      arnMexa2021 = toupper(arnMexa2021)
+      vect = j%%12
+      if (vect == 0){
+        vect = 12
+      }
+      if (j==2) next
+      anotaciones = attr(original[[vect]], "Annot") 
+      atributos = unlist(strsplit(anotaciones,"\\[|\\]|:|=|\\.|\\(")); 
+      geneName = atributos[which(atributos=="gene")+1] 
+      if (length(which(atributos=="join"))>0) inicioGen = as.integer(atributos[which(atributos=="join")+1]) 
+      else inicioGen = as.integer(atributos[which(atributos=="location")+1]) 
+      #cat ("------ gene:", geneName, "inicioGen:",inicioGen,"\n")
+      mutations = mutaciones(arnMexa2020, arnMexa2021, inicioGen, geneName)
+    }
+  }
+}
+```
+
+Donde empezamos iterando a las muestras del 2020 para comparar todas y cada una de ellas con las del 2021 que correspondan al mismo lugar módulo 12 para así comparar cada gen correspondientemente. Cabe resaltar que se cambió el nucleotido "t" por "u" para convertir la secuencia en ARN. Obtuvimos una serie de datos de todas las mutaciones de la siguiente longitud:
+
+```{r}
+str(mutations)
+```
+
+Observemos que existen muchas observaciones, entre las cuales muchas de ellas pueden aparecer la mínima cantidad de veces y pueden ser insignificantes para su estudio posterior, por lo que vamos a filtrar entre los que aparecieron más de 10 veces.
+
+```{r}
+
+library(dplyr)
+dfgraph = filter( #crea una especie de dataframe (tibble) con su propia estructura
+  summarise(
+    select(
+      group_by(mutations, cambioAmino), #(df, columna), agrupa por columna de aminoacido
+      mutation:gen
+    ),
+    mutation = first(mutation),
+    cambioCodon = first(cambioCodon),
+    gen = first(gen),
+    Cuenta = n() #establece una cuenta para verificar el número de registros que tenemos
+  ),
+  Cuenta>100
+)
+```
+
+Como los genes de nuestro interés son los estructurales, entonces los separaremos:
+
+```{r}
+mutations_S = subset(dfgraph, gen == "S")
+mutations_M = subset(dfgraph, gen == "M")
+mutations_E = subset(dfgraph, gen == "E")
+mutations_N = subset(dfgraph, gen == "N")
+```
+
+Para visualizar de mejor manera estos datos, obtuvimos las siguientes gráficas:
+
+```{r}
+grafica_E
+
+```
+
+```{r}
+grafica_M
+```
+
+```{r}
+grafica_N
+```
+
+```{r}
+grafica_S
+```
+
 
 ------------------------------------------------------------------------
 
