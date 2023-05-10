@@ -1,5 +1,6 @@
 library(seqinr)
 library(knitr)
+save.image (file = "my_work_space.RData")
 
 
 mx_2020 = read.fasta("mx_2020_b519.fasta")

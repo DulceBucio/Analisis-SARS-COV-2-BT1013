@@ -1,16 +1,13 @@
 ---
-# Instituto Tecnológico de Estudios Superiores de Monterrey
-
-## Análisis de biología computacional - BT1013
-
-### Desirée Espinosa Contreras - A01425162
-
-### Dulce Nahomi Bucio Rivas - A01425284
-
-
-
-## title: "Evidencia 2: Proyecto" output: pdf_document: toc: true number_sections: true latex_engine: pdflatex keep_tex: true
+title: ""
+output: pdf_document
 ---
+
+```{r include=FALSE}
+load("my_work_space.RData")
+library(seqinr)
+library(knitr)
+```
 
 ## Análisis de biología computacional - BT1013
 
@@ -26,29 +23,28 @@ La pandemia de COVID-19, provocada por el virus SARS-CoV-2, tuvo su inicio en el
 
 ## Propuesta
 
-Para el proyecto, se hará un análisis de las secuencias del virus en México de febrero a diciembre de 2020, y de febrero a diciembre de 2021.
+Para el proyecto, haremos un análisis de las secuencias del virus en México de febrero a diciembre de 2020, y de febrero a diciembre de 2021.
 
 ## Objetivo
 
-Encontrar los cambios que experimentó el SARS-CoV-2 en su estructura durante estos períodos de tiempo. Analizaremos principalmente los genes S, M, E y N, los cuales han demostrado tener un papel importante en la construcción de la estructura del virus, especialmente el gen S.
+Encontrar los cambios que experimentó el SARS-CoV-2 en su estructura durante estos periodos de tiempo. Analizaremos principalmente los genes S, M, E y N, los cuales han demostrado tener un papel importante en la construcción de la estructura del virus, especialmente el gen S.
 
 ## Hipótesis
 
-Se encontrará una cantidad relevante de mutaciones en el gen S, lo cual podría implicar que dichas mutaciones estuvieron involucradas en el aumento de la transmisibilidad del virus y/o en la efectividad de las vacunas. Además, se podrá obtener información valiosa sobre la evolución del virus
+Encontraremos una cantidad relevante de mutaciones en el gen S, la cual podría implicarse que dichas mutaciones estuvieron involucradas en el aumento de la transmisibilidad del virus y/o en la efectividad de las vacunas. Además, podríamos obtener información valiosa sobre la evolución del virus.
 
 ## Marco Teórico
 
-Para el enfoque del estudio, es importante definir qué es una variante. Una variante es un genoma viral (código genético) que puede incluir una o más mutaciones. La primera variante detectada fue la Alfa B.1.1.7, que se observó por primera vez en el suroeste de Inglaterra y se caracteriza por ser entre un 30% y un 70% más contagiosa que el virus original.
+Para nuestro enfoque de estudio es importante definir qué es una variante, la cual es un genoma viral (código genético) que puede incluir una o más mutaciones. La primera variación detectada fue la Alfa B.1.1.7, la cual fue observada por primera vez en el suroeste de Inglaterra y se caracteriza por ser entre 30% y 70% más contagiosa que el virus original.
 
-A continuación, se presentan algunas de las variantes más relevantes descubiertas en distintas regiones del mundo:
+Existen variables características descubiertas en distintas regiones del mundo que fueron principalmente bajo observación, tales son:\
+**Variante Alfa B.1.1.7**: Descubierta en Reino Unido, fue la variable dominante a nivel mundial hasta el año 2021 con una frecuencia mayor al 80% en regiones tales como Europa y América del Norte.
 
-**Variante Alfa B.1.1.7**: Descubierta en Reino Unido, fue la variante dominante a nivel mundial hasta el año 2021, con una frecuencia mayor al 80% en regiones como Europa y América del Norte.
+**Variante Beta B.1.351**: Detectada en Sudáfrica, siendo mayoritariamente dominante en esta región pero en otras no rebasando una frecuencia del 20%. Caracterizada únicamente por tener mayor carga vírica pero no se encontró ni se demostró nada más acerca de su transmisibilidad.
 
-**Variante Beta B.1.351**: Detectada en Sudáfrica, fue mayoritariamente dominante en esa región, pero en otras no superó una frecuencia del 20%. Se caracteriza únicamente por tener mayor carga vírica, pero no se encontró ni se demostró nada más acerca de su transmisibilidad.
+**Variante Gamma P1**: Procedente de la Amazonas Brasileña se convirtió en la más dominante en América del Sur mientras que en otras regiones la frecuencia no supera el 10%, siendo caracterizada por ser más contagiosa.
 
-**Variante Gamma P1**: Procedente de la Amazonas brasileña, se convirtió en la más dominante en América del Sur, mientras que en otras regiones su frecuencia no supera el 10%. Se caracteriza por ser más contagiosa.
-
-**Variante DELTA B.1.617.2**: Encontrada en la India, esta variante dio señales de ser más contagiosa y resistente a vacunas y tratamientos. Fue responsable del colapso del sistema sanitario en ese país, así como de su propagación por 26 países de la región europea de la OMS.
+**Variante DELTA B.1.617.2**: Encontrada en la India, esta variante dio señales de ser más contagiosa y resistente a vacunas y tratamientos. Fue la variante responsable del colapso del sistema sanitario en ese país, así como de su propagación por 26 países de la región europea de la OMS.
 
 ------------------------------------------------------------------------
 
@@ -63,11 +59,11 @@ length(mx_2021)
 
 ```
 
-Consideremos que los 11 genes del SARS-COV-2 son representados en los archivos proporcionados como el ORF1ab separado, por lo que tenemos un vector de 12 genes por cada secuencia. Entonces, tenemos que analizar 5 secuencias del 2020 contra 200 del 2021.
+Consideremos que los 11 genes del SARS-COV-2 son representados en los archivos dados como el ORF1ab separado, por lo que tenemos un vector de 12 genes por cada secuencia. Entonces, tenemos que analizar 5 secuencias del 2020 contra 200 del 2021.
 
 Usaremos la siguiente serie de funciones para encontrar las mutaciones necesarias:
 
-```{r}
+```{r include=FALSE}
 aminoacido = function(codon) {
   aminoacid = switch(
     codon, 
@@ -92,7 +88,7 @@ aminoacido = function(codon) {
 }
 ```
 
-Esta primera función llamada "aminoacido" devuelve la abreviación establecida de los distintos aminoácidos según una entrada dada. Esta función es posteriormente utilizada en la siguiente función que muestra las mutaciones para indicar el cambio de proteína.
+Ésta primera función llamada "aminoacido" devuelve la abreviación establecida de los distintos aminoácidos según una entrada dada. Esta función es posteriormente utilizada en la siguiente función que muestra las mutaciones para indicar el cambio de proteína.
 
 ```{r}
 mutaciones = function(arnOriGenX, arnMexaGenX, inicioOri, gen){
@@ -123,39 +119,16 @@ Nótese que la función "aminoácidos" devuelve la abreviación establecida de l
 Para usar la función en todas las secuencias aplicamos el siguiente ciclo:
 
 ```{r}
-for (k in seq(1, length(mx_2020))) {
-  arnMexa2020 = as.vector(mx_2020[[k]])
-  arnMexa2020[arnMexa2020=="t"] = "u"
-  arnMexa2020 = toupper(arnMexa2020)
-  for (j in seq(1,length(mx_2021))){
-    if (k%%12 == j%%12){
-      arnMexa2021 = as.vector(mx_2021[[j]])
-      arnMexa2021[arnMexa2021 == "t"] = "u"
-      arnMexa2021 = toupper(arnMexa2021)
-      vect = j%%12
-      if (vect == 0){
-        vect = 12
-      }
-      if (j==2) next
-      anotaciones = attr(original[[vect]], "Annot") 
-      atributos = unlist(strsplit(anotaciones,"\\[|\\]|:|=|\\.|\\(")); 
-      geneName = atributos[which(atributos=="gene")+1] 
-      if (length(which(atributos=="join"))>0) inicioGen = as.integer(atributos[which(atributos=="join")+1]) 
-      else inicioGen = as.integer(atributos[which(atributos=="location")+1]) 
-      #cat ("------ gene:", geneName, "inicioGen:",inicioGen,"\n")
-      mutations = mutaciones(arnMexa2020, arnMexa2021, inicioGen, geneName)
-    }
-  }
-}
+
 ```
 
-Empezamos iterando las muestras del 2020 para comparar cada una de ellas con las del 2021 que correspondan al mismo lugar módulo 12, con el fin de comparar cada gen correspondientemente. Es importante destacar que se cambió el nucleótido "T" por "U" para convertir la secuencia en ARN. Obuvimos una serie de datos de todas las mutaciones de la siguiente longitud:
+Donde empezamos iterando a las muestras del 2020 para comparar todas y cada una de ellas con las del 2021 que correspondan al mismo lugar módulo 12 para así comparar cada gen correspondientemente. Cabe resaltar que se cambió el nucleotido "t" por "u" para convertir la secuencia en ARN. Obtuvimos una serie de datos de todas las mutaciones de la siguiente longitud:
 
 ```{r}
 str(mutations)
 ```
 
-Podemos notar que existen muchas observaciones, entre las cuales algunas pueden aparecer en una cantidad mínima de veces y ser insignificantes para el estudio posterior. Por lo tanto, vamos a filtrar aquellas que aparecieron más de 10 veces.
+Observemos que existen muchas observaciones, entre las cuales muchas de ellas pueden aparecer la mínima cantidad de veces y pueden ser insignificantes para su estudio posterior, por lo que vamos a filtrar entre los que aparecieron más de 10 veces.
 
 ```{r}
 
@@ -211,9 +184,10 @@ A partir de estos datos y tras diversas investigaciones, se puede afirmar que la
 
 ------------------------------------------------------------------------
 
-#### Bibliografía
+## Bibliografía
 
 -- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la historia del intensivismo. Medicina Intensiva, 44(6), 323-324. <https://doi.org/10.1016/j.medin.2020.04.002>\
 -- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.). Johns Hopkins Coronavirus Resource Center. <https://coronavirus.jhu.edu/map.html>\
 -- Updated working definitions and primary actions for SARSCOV2 variants. (s.f.). Retrieved April 25, 2023, from <https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants>\
 -- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>s
+\<Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>
