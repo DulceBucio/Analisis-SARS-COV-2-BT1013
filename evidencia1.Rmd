@@ -63,7 +63,7 @@ Consideremos que los 11 genes del SARS-COV-2 son representados en los archivos d
 
 Usaremos la siguiente serie de funciones para encontrar las mutaciones necesarias:
 
-```{r}
+```{r include=FALSE}
 aminoacido = function(codon) {
   aminoacid = switch(
     codon, 
