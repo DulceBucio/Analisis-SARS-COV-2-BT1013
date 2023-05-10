@@ -35,7 +35,7 @@ Encontrar los cambios que experimentó el SARS-CoV-2 en su estructura durante es
 
 ## Hipótesis
 
-Se encontrará una cantidad relevante de mutaciones en el gen S, lo cual podría implicar que dichas mutaciones estuvieron involucradas en el aumento de la transmisibilidad del virus y/o en la efectividad de las vacunas. Además, se podrá obtener información valiosa sobre la evolución del virus
+Se encontrará una cantidad relevante de mutaciones en el gen S, lo cual podría implicar que dichas mutaciones estuvieron involucradas en el aumento de la transmisibilidad del virus y/o en la efectividad de las vacunas. Además, se podrá obtener información valiosa sobre la evolución del virus.
 
 ## Marco Teórico
 
@@ -43,6 +43,7 @@ Para el enfoque del estudio, es importante definir qué es una variante. Una var
 
 A continuación, se presentan algunas de las variantes más relevantes descubiertas en distintas regiones del mundo:
 
+\
 **Variante Alfa B.1.1.7**: Descubierta en Reino Unido, fue la variante dominante a nivel mundial hasta el año 2021, con una frecuencia mayor al 80% en regiones como Europa y América del Norte.
 
 **Variante Beta B.1.351**: Detectada en Sudáfrica, fue mayoritariamente dominante en esa región, pero en otras no superó una frecuencia del 20%. Se caracteriza únicamente por tener mayor carga vírica, pero no se encontró ni se demostró nada más acerca de su transmisibilidad.
@@ -111,8 +112,10 @@ mutaciones = function(arnOriGenX, arnMexaGenX, inicioOri, gen){
     # Calcular el inicio del codón
     indiceCodon = x - (x%%3) + 1 
     # Concatena los nucleotidos para crear el codon a comparar
-    codonOri = paste(arnOriGenX[indiceCodon], arnOriGenX[indiceCodon+1], arnOriGenX[indiceCodon+2], sep = "") 
-    codonMex = paste(arnMexaGenX[indiceCodon], arnMexaGenX[indiceCodon+1], arnMexaGenX[indiceCodon+2], sep = "")
+    codonOri = paste(arnOriGenX[indiceCodon], arnOriGenX[indiceCodon+1], 
+                     arnOriGenX[indiceCodon+2], sep = "") 
+    codonMex = paste(arnMexaGenX[indiceCodon], arnMexaGenX[indiceCodon+1], 
+                     arnMexaGenX[indiceCodon+2], sep = "")
     codon = paste(codonOri,"to",codonMex, sep="") #Compara el cambio
     # Aplica la función "aminoácido" para obtener la abreviación
     aminoOri = aminoacido(codonOri) 
@@ -156,7 +159,8 @@ for (k in seq(1, length(mx_2020))) {
       anotaciones = attr(original[[vect]], "Annot") 
       atributos = unlist(strsplit(anotaciones,"\\[|\\]|:|=|\\.|\\(")); 
       geneName = atributos[which(atributos=="gene")+1] 
-      if (length(which(atributos=="join"))>0) inicioGen = as.integer(atributos[which(atributos=="join")+1]) 
+      if (length(which(atributos=="join"))>0) 
+        inicioGen = as.integer(atributos[which(atributos=="join")+1]) 
       else inicioGen = as.integer(atributos[which(atributos=="location")+1]) 
       # Usamos la función "mutaciones" con los parámetros adquiridos en este ciclo
       mutations = mutaciones(arnMexa2020, arnMexa2021, inicioGen, geneName)
@@ -191,7 +195,7 @@ mutaciones_filtradas = filter(
 )
 ```
 
-Debido a que los genes de nuestro interés son los estructurales, entonces los separaremos:
+Como los genes de nuestro interés son los estructurales, entonces los separaremos:
 
 ```{r}
 mutations_S = subset(mutaciones_filtradas, gen == "S")
@@ -200,7 +204,9 @@ mutations_E = subset(mutaciones_filtradas, gen == "E")
 mutations_N = subset(mutaciones_filtradas, gen == "N")
 ```
 
-## Resultados
+Para visualizar de mejor manera estos datos, se presentan las siguientes gráficas:
+
+## Análisis de resultados
 
 Para visualizar de mejor manera estos datos, obtuvimos las siguientes gráficas:
 
@@ -223,24 +229,14 @@ grafica_S
 
 Los resultados mostrados en las gráficas indican que los genes con mayor número de mutaciones fueron el gen S y el gen N, mientras que el M tuvo una menor cantidad de mutaciones y el gen E no presentó mutaciones.
 
-## Conclusión
-
-Gracias a las diversas herramientas de análisis estadístico de datos que ofrece R, se pudo observar que no solo el gen S, como se había hipotetizado, sino también los genes N y M, presentan mutaciones.
-A partir de los resultados y de investigaciones adicionales, se puede afirmar entonces que la gran cantidad de mutaciones en el gen N, en el gen M y en la proteína de espiga podrían tener efectos sobre la capacidad del virus para infectar las células humanas, lo que puede aumentar la transmisibilidad de este. Además, se ha comprobado que las mutaciones en estos genes pueden afectar también la habilidad de los anticuerpos para combatir el virus, lo que potencialmente afectaría la eficacia de las vacunas.
-Por esto, podemos explicar la aparición de nuevas variantes cada vez más transmisibles de 2020 a 2021, como la variante Delta.
-
-Es crucial destacar que vigilar de forma continua las mutaciones del virus es esencial para prevenir la propagación de variantes más contagiosas y peligrosas. Los expertos en salud de todo el mundo trabajan arduamente para comprender cómo las mutaciones afectan la propagación, la gravedad de la enfermedad y la eficacia de las medidas de prevención y tratamiento. Detectar rápidamente las mutaciones y tomar medidas de control oportunas puede ser clave para evitar una mayor propagación del virus y reducir su impacto en la salud pública y la economía global. Por lo tanto, es fundamental que se mantenga una vigilancia constante y coordinada a nivel mundial para monitorear la evolución del virus y sus mutaciones. En esta tarea, herramientas como R pueden ser de gran ayuda al facilitar la identificación temprana de mutaciones y permitir una respuesta rápida y efectiva.
+A partir de estos datos y tras diversas investigaciones, se puede afirmar que la gran cantidad de mutaciones en el gen N, en el gen M y en la proteína de espiga han demostrado tener efectos sobre la capacidad del virus para infectar las células humanas, lo que puede aumentar la transmisibilidad de este. Por otro lado, se ha comprobado que las alteraciones genéticas en estos genes pueden afectar la habilidad de los anticuerpos para combatir el virus, lo que potencialmente afectaría la eficacia de las vacunas.
 
 ------------------------------------------------------------------------
 
 ## Bibliografía
 
--- Abu-Raddad, L. J., et al. (2020). An interactive web-based dashboard to track COVID-19 in real time. The Lancet Infectious Diseases, 20(9), 533-534. Recuperado el 9 de mayo, de <https://doi.org/10.1016/S1473-3099(20)30457-6>\
--- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.). Johns Hopkins Coronavirus Resource Center. Recuperado el 25 de abril, de <https://coronavirus.jhu.edu/map.html>\
--- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la historia del intensivismo. Medicina Intensiva, 44(6), 323-324. Recuperado el 25 de abril, de <https://doi.org/10.1016/j.medin.2020.04.002>\
--- Grubaugh, N. D., et al. (2020). Genomic epidemiology reveals multiple introductions of SARS-CoV-2 into the United States. Science, 368(6491), 1-8. Recuperado el 9 de mayo, de <https://doi.org/10.1126/science.abc2942>\
--- Gu, H., et al. (2020). Adaptation of SARS-CoV-2 in BALB/c mice for testing vaccine efficacy. Science, 369(6500), 1603-1607. Recuperado el 9 de mayo, de <https://doi.org/10.1126/science.abc4730>\
--- National Center for Biotechnology Information. (s. f.). Virus Variation Resource - SARS-CoV-2 (Severe acute respiratory syndrome coronavirus 2). Recuperado el 25 de abril, de <https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType_s=Nucleotide&VirusLineage_ss=Severe%20acute%20respiratory%20syndrome%20coronavirus%202,%20taxid:2697049&utm_source=data-hub>\
--- Plante, J. A., et al. (2021). The variant gambit: COVID-19's next move. Cell Host & Microbe, 29(2), 197-198. Recuperado el 9 de mayo, de <https://doi.org/10.1016/j.chom.2021.01.017>\
--- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Recuperado el 25 de abril de 2023, de <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>\
--- Updated working definitions and primary actions for SARSCOV2 variants. (s.f.). Recuperado el 25 de abril de 2023, de <https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants>\
+-- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la historia del intensivismo. Medicina Intensiva, 44(6), 323-324. <https://doi.org/10.1016/j.medin.2020.04.002>\
+-- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.). Johns Hopkins Coronavirus Resource Center. <https://coronavirus.jhu.edu/map.html>\
+-- Updated working definitions and primary actions for SARSCOV2 variants. (s.f.). Retrieved April 25, 2023, from <https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants>\
+-- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>\
+--Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>\
