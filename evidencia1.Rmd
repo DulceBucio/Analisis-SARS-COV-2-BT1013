@@ -213,6 +213,8 @@ grafica_E
 
 ```
 
+Cabe destacar en este caso no hubo ninguna mutación que apareciera más de 10 veces.
+
 ```{r}
 grafica_M
 ```
@@ -228,9 +230,8 @@ grafica_S
 Los resultados mostrados en las gráficas indican que los genes con mayor número de mutaciones fueron el gen S y el gen N, mientras que el M tuvo una menor cantidad de mutaciones y el gen E no presentó mutaciones.
 
 ## Conclusión
-Gracias a las diversas herramientas de análisis estadístico de datos que ofrece R, se pudo observar que no solo el gen S, como se había hipotetizado, sino también los genes N y M, presentan mutaciones.
-A partir de los resultados y de investigaciones adicionales, se puede afirmar entonces que la gran cantidad de mutaciones en el gen N, en el gen M y en la proteína de espiga podrían tener efectos sobre la capacidad del virus para infectar las células humanas, lo que puede aumentar la transmisibilidad de este. Además, se ha comprobado que las mutaciones en estos genes pueden afectar también la habilidad de los anticuerpos para combatir el virus, lo que potencialmente afectaría la eficacia de las vacunas.
-Por esto, podemos explicar la aparición de nuevas variantes cada vez más transmisibles de 2020 a 2021, como la variante Delta.
+
+Gracias a las diversas herramientas de análisis estadístico de datos que ofrece R, se pudo observar que no solo el gen S, como se había hipotetizado, sino también los genes N y M, presentan mutaciones. A partir de los resultados y de investigaciones adicionales, se puede afirmar entonces que la gran cantidad de mutaciones en el gen N, en el gen M y en la proteína de espiga podrían tener efectos sobre la capacidad del virus para infectar las células humanas, lo que puede aumentar la transmisibilidad de este. Además, se ha comprobado que las mutaciones en estos genes pueden afectar también la habilidad de los anticuerpos para combatir el virus, lo que potencialmente afectaría la eficacia de las vacunas. Por esto, podemos explicar la aparición de nuevas variantes cada vez más transmisibles de 2020 a 2021, como la variante Delta.
 
 Es crucial destacar que vigilar de forma continua las mutaciones del virus es esencial para prevenir la propagación de variantes más contagiosas y peligrosas. Los expertos en salud de todo el mundo trabajan arduamente para comprender cómo las mutaciones afectan la propagación, la gravedad de la enfermedad y la eficacia de las medidas de prevención y tratamiento. Detectar rápidamente las mutaciones y tomar medidas de control oportunas puede ser clave para evitar una mayor propagación del virus y reducir su impacto en la salud pública y la economía global. Por lo tanto, es fundamental que se mantenga una vigilancia constante y coordinada a nivel mundial para monitorear la evolución del virus y sus mutaciones. En esta tarea, herramientas como R pueden ser de gran ayuda al facilitar la identificación temprana de mutaciones y permitir una respuesta rápida y efectiva.
 
@@ -238,7 +239,7 @@ Es crucial destacar que vigilar de forma continua las mutaciones del virus es es
 
 ### Bibliografía
 
--- Abu-Raddad, L. J., et al. (2020). An interactive web-based dashboard to track COVID-19 in real time. The Lancet Infectious Diseases, 20(9), 533-534. Recuperado el 9 de mayo, de <https://doi.org/10.1016/S1473-3099(20)30457-6>\
+-- Abu-Raddad, L. J., et al. (2020). An interactive web-based dashboard to track COVID-19 in real time. The Lancet Infectious Diseases, 20(9), 533-534. Recuperado el 9 de mayo, de [https://doi.org/10.1016/S1473-3099(20)30457-6](https://doi.org/10.1016/S1473-3099(20)30457-6){.uri}\
 -- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.). Johns Hopkins Coronavirus Resource Center. Recuperado el 25 de abril, de <https://coronavirus.jhu.edu/map.html>\
 -- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la historia del intensivismo. Medicina Intensiva, 44(6), 323-324. Recuperado el 25 de abril, de <https://doi.org/10.1016/j.medin.2020.04.002>\
 -- Grubaugh, N. D., et al. (2020). Genomic epidemiology reveals multiple introductions of SARS-CoV-2 into the United States. Science, 368(6491), 1-8. Recuperado el 9 de mayo, de <https://doi.org/10.1126/science.abc2942>\
