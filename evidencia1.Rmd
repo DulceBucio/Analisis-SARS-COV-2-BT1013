@@ -184,8 +184,8 @@ mutations_E = subset(dfgraph, gen == "E")
 mutations_N = subset(dfgraph, gen == "N")
 ```
 
-
 ## Análisis de resultados
+
 Para visualizar de mejor manera estos datos, obtuvimos las siguientes gráficas:
 
 ```{r}
@@ -204,7 +204,8 @@ grafica_N
 ```{r}
 grafica_S
 ```
-Los resultados mostrados en las gráficas indican que los genes con mayor número de mutaciones fueron el gen S y el gen N, mientras que el M tuvo una menor cantidad de mutaciones y el gen E no presentó mutaciones. 
+
+Los resultados mostrados en las gráficas indican que los genes con mayor número de mutaciones fueron el gen S y el gen N, mientras que el M tuvo una menor cantidad de mutaciones y el gen E no presentó mutaciones.
 
 A partir de estos datos y tras diversas investigaciones, se puede afirmar que la gran cantidad de mutaciones en el gen N, en el gen M y en la proteína de espiga han demostrado tener efectos sobre la capacidad del virus para infectar las células humanas, lo que puede aumentar la transmisibilidad de este. Por otro lado, se ha comprobado que las alteraciones genéticas en estos genes pueden afectar la habilidad de los anticuerpos para combatir el virus, lo que potencialmente afectaría la eficacia de las vacunas.
 
@@ -215,6 +216,4 @@ A partir de estos datos y tras diversas investigaciones, se puede afirmar que la
 -- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la historia del intensivismo. Medicina Intensiva, 44(6), 323-324. <https://doi.org/10.1016/j.medin.2020.04.002>\
 -- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.). Johns Hopkins Coronavirus Resource Center. <https://coronavirus.jhu.edu/map.html>\
 -- Updated working definitions and primary actions for SARSCOV2 variants. (s.f.). Retrieved April 25, 2023, from <https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants>\
--- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>
-
-## Bibliografía
+-- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>s
