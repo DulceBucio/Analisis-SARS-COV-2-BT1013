@@ -191,7 +191,7 @@ mutaciones_filtradas = filter(
 )
 ```
 
-Como los genes de nuestro interés son los estructurales, entonces los separaremos:
+Debido a que los genes de nuestro interés son los estructurales, entonces los separaremos:
 
 ```{r}
 mutations_S = subset(mutaciones_filtradas, gen == "S")
@@ -201,9 +201,6 @@ mutations_N = subset(mutaciones_filtradas, gen == "N")
 ```
 
 ## Resultados
-Para visualizar de mejor manera estos datos, se presentan las siguientes gráficas:
-
-## Análisis de resultados
 
 Para visualizar de mejor manera estos datos, obtuvimos las siguientes gráficas:
 
@@ -247,8 +244,3 @@ Es crucial destacar que vigilar de forma continua las mutaciones del virus es es
 -- Plante, J. A., et al. (2021). The variant gambit: COVID-19's next move. Cell Host & Microbe, 29(2), 197-198. Recuperado el 9 de mayo, de <https://doi.org/10.1016/j.chom.2021.01.017>\
 -- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Recuperado el 25 de abril de 2023, de <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>\
 -- Updated working definitions and primary actions for SARSCOV2 variants. (s.f.). Recuperado el 25 de abril de 2023, de <https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants>\
--- Ferrer, R. (2020). Pandemia por COVID-19: el mayor reto de la historia del intensivismo. Medicina Intensiva, 44(6), 323-324. <https://doi.org/10.1016/j.medin.2020.04.002>\
--- COVID-19 Map - Johns Hopkins Coronavirus Resource Center. (s.f.). Johns Hopkins Coronavirus Resource Center. <https://coronavirus.jhu.edu/map.html>\
--- Updated working definitions and primary actions for SARSCOV2 variants. (s.f.). Retrieved April 25, 2023, from <https://www.who.int/publications/m/item/historical-working-definitions-and-primary-actions-for-sars-cov-2-variants>\
--- Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>\
---Pulido, S. (2021). Variantes Covid por países: Un análisis completo y experiencias en Reino Unido y ee.uu con Los Test Genéticos. Retrieved April 25, 2023, from <https://economiadelasalud.com/topics/difusion/variantes-covid-por-paises-un-analisis-completo-y-experiencias-en-reino-unido-y-ee-uu-con-los-test-geneticos/>\
